@@ -65,7 +65,6 @@ class HashTable:
             if current.key == key:
                 current.value = value
                 return
-
             if current.next is None:
                 break
 
@@ -87,38 +86,38 @@ class HashTable:
     def print_table(self):
         for i in range(len(self.data)):
             current = self.data[i]
+            
             if current is None:
                 print(f"Index {i}: Empty")
             else:
                 contacts = []
+
                 while current is not None:
                     contacts.append(str(current.value))
                     current = current.next
-                for i in range(len(contacts)):
-                    print(f"Index {i}: " +  " - ".join(contacts))
+                print(f"Index {i}: " +  " - ".join(contacts))
 
 # Contact Class test
 contact_1 = Contact("Riley", "123-456-7890")
 print(contact_1)
-print()
 
 # Node Class test
 node_1 = Node(contact_1.name, contact_1)
 print(node_1.key)
 print(node_1.value)
 print(node_1.next)
-print()
 
 # HashTable Class test
 table = HashTable(10)
 table.print_table()
-print()
 table.insert("John", Contact("John", "909-876-1234"))
 table.insert("Rebecca", Contact("Rebecca", "111-555-0002"))
 table.print_table()
 contact = table.search("John")
 print("Search result:", contact)
-print()
 table.insert("Amy", Contact("Amy", "111-222-3333"))
 table.insert("May", Contact("May", "222-333-1111"))
 table.print_table()
+table.insert("Rebecca", Contact("Rebecca", "999-444-9999"))
+table.print_table()
+print(table.search("Chris"))
